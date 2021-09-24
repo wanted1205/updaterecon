@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  schedule:
+  - cron: "0 0 * * *"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: dnsvalidator
+      run: |
+        git clone https://github.com/vortexau/dnsvalidator
+        cd dnsvalidator
+        pip3 install wheel
+        pip3 install setuptools
+        sudo python3 setup.py install
+        rm ../resolvers.txt
+        dnsvalidator -tL https://raw.githubusercontent.com/wanted1205/updaterecon/main/resolvers.txt -threads 5 -o ../resolvers.txt
+        dnsvalidator -tL https://raw.githubusercontent.com/proabiral/Fresh-Resolvers/master/resolvers.ipv6 -threads 5 -o ../resolvers.txt
+        dnsvalidator -tL https://raw.githubusercontent.com/proabiral/Fresh-Resolvers/master/resolvers.txt -threads 5 -o ../resolvers.txt
+        dnsvalidator -tL https://raw.githubusercontent.com/blechschmidt/massdns/master/lists/resolvers.txt -threads 5 -o ../resolvers.txt
+        sort -uR ../resolvers.txt -o ../resolvers.txt
+        sed -i '/^$/d' ../resolvers.txt
+    - name: Commit resolvers.txt
+      run: |
+        git clone https://${{ secrets.tok}}@github.com/wanted1205/1recon.git
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        cd 1recon;git add resolvers.txt;git commit -m "Update resolvers" -a;git push "https://${{ secrets.tok}}@github.com/wanted1205/1recon.git" HEAD:master --follow-tags
