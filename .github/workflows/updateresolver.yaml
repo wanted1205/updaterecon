@@ -22,7 +22,7 @@ jobs:
         sort -uR ../resolvers.txt -o ../resolvers.txt
     - name: Commit resolvers.txt
       run: |
-        git clone https://${{ secrets.tok}}@github.com/wanted1205/1recon.git
+        git clone https://${{ secrets.tok }}@github.com/wanted1205/1recon.git
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         cp resolvers.txt 1recon/resolvers.txt
