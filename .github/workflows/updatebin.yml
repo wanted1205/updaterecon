@@ -8,7 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
     - uses: actions/setup-go@v2.1.4
     - name: Setup All
       run: |
@@ -29,13 +28,14 @@ jobs:
        cd nuclei/v2/cmd/nuclei/;go build .;cd ../../../../
        cd subfinder/v2/cmd/subfinder;go build . ;cd ../../../../
        cd waybackurls;go build .;cd ..
-      working-directory: /home/runner/work 
+      working-directory: /home/runner/work/updaterecon 
     - name: Copy all
       run: |
-       cp massdns/bin/massdns 1recon/1recon/bin/
-       cp  /home/runner/go/bin/shuffledns /home/runner/work/1recon/1recon/bin/;cp  /home/runner/go/bin/amass /home/runner/work/1recon/1recon/bin/;cp  /home/runner/go/bin/httpx /home/runner/work/1recon/1recon/bin/
-       cp anew/anew 1recon/1recon/bin/;cp dalfox/dalfox 1recon/1recon/bin/;cp ffuf/ffuf 1recon/1recon/bin/;cp hakrawler/hakrawler 1recon/1recon/bin/;cp gau/gau s/bin/;cp gf/gf 1recon/1recon/bin/;cp nuclei/v2/cmd/nuclei/nuclei 1recon/1recon/bin/;cp subfinder/v2/cmd/subfinder/subfinder 1recon/1recon/bin/;cp waybackurls/waybackurls 1recon/1recon/bin/
-      working-directory: /home/runner/work
+       git clone https://${{ secrets.tok}}@github.com/wanted1205/1recon.git
+       cp massdns/bin/massdns 1recon/bin/
+       cp  /home/runner/go/bin/shuffledns /home/runner/work/updaterecon/1recon/bin/;cp  /home/runner/go/bin/amass /home/runner/work/updaterecon/1recon/bin/;cp  /home/runner/go/bin/httpx /home/runner/work/updaterecon/1recon/bin/
+       cp anew/anew 1recon/bin/;cp dalfox/dalfox 1recon/bin/;cp ffuf/ffuf 1recon/bin/;cp hakrawler/hakrawler 1recon/bin/;cp gau/gau 1recon/bin/;cp gf/gf 1recon/bin/;cp nuclei/v2/cmd/nuclei/nuclei 1recon/bin/;cp subfinder/v2/cmd/subfinder/subfinder 1recon/bin/;cp waybackurls/waybackurls 1recon/bin/
+      working-directory: /home/runner/work/updaterecon
     - name: Push to repo
       run: |
        git clone https://${{ secrets.tok}}@github.com/wanted1205/1recon.git
@@ -43,3 +43,4 @@ jobs:
        git add bin/
        git commit -m "Update bin" -a
        git push "https://${{ secrets.tok}}@github.com/wanted1205/1recon.git" HEAD:master --follow-tags
+      working-directory: /home/runner/work/updaterecon/1recon 
