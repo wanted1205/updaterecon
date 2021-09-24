@@ -26,4 +26,5 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         cp resolvers.txt 1recon/resolvers.txt
-        cd 1recon;git add resolvers.txt;git commit -m "Update resolvers" -a;git push "https://${{ secrets.tok}}@github.com/wanted1205/1recon.git" HEAD:master --follow-tags
+        cd 1recon;git add resolvers.txt;git commit -m "Update resolvers" -a;git push "https://${{ secrets.tok }}@github.com/wanted1205/1recon.git" HEAD:master --follow-tags
+ 
