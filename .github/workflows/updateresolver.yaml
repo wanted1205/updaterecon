@@ -19,11 +19,12 @@ jobs:
         dnsvalidator -tL https://raw.githubusercontent.com/proabiral/Fresh-Resolvers/master/resolvers.ipv6 -threads 5 -o ../resolvers.txt
         dnsvalidator -tL https://raw.githubusercontent.com/proabiral/Fresh-Resolvers/master/resolvers.txt -threads 5 -o ../resolvers.txt
         dnsvalidator -tL https://raw.githubusercontent.com/blechschmidt/massdns/master/lists/resolvers.txt -threads 5 -o ../resolvers.txt
-        sort -uR ../resolvers.txt -o ../resolvers.txt
         sed -i '/^$/d' ../resolvers.txt
+        sort -uR ../resolvers.txt -o ../resolvers.txt
     - name: Commit resolvers.txt
       run: |
         git clone https://${{ secrets.tok}}@github.com/wanted1205/1recon.git
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+        cp resolvers.txt 1recon/resolvers.txt
         cd 1recon;git add resolvers.txt;git commit -m "Update resolvers" -a;git push "https://${{ secrets.tok}}@github.com/wanted1205/1recon.git" HEAD:master --follow-tags
