@@ -44,11 +44,11 @@ jobs:
       run: |
        git add bin/
        git commit -m "Update bin" -a
-       git push "https://${{ secrets.tok }}@github.com/wanted1205/1recon.git" HEAD:master --follow-tags
+       git push "https://${{ secrets.tok }}@github.com/wanted1205/1recon.git" HEAD:main --follow-tags
       working-directory: /home/runner/work/updaterecon/1recon 
     - name: Push to repo
       run: |
        git add bin/
        git commit -m "Update bin" -a
-       git push "https://${{ secrets.tok }}@github.com/wanted1205/recon.git" HEAD:master --follow-tags
+       git push "https://${{ secrets.tok }}@github.com/wanted1205/recon.git" HEAD:main --follow-tags
       working-directory: /home/runner/work/updaterecon/recon 
