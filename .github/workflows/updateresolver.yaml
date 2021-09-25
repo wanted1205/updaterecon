@@ -12,8 +12,8 @@ jobs:
       run: |
         git clone https://github.com/vortexau/dnsvalidator
         cd dnsvalidator
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config  user.email "action@github.com"
+        git config  user.name "GitHub Action"
         pip3 install wheel
         pip3 install setuptools
         sudo python3 setup.py install
