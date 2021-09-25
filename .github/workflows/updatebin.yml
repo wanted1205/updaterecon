@@ -11,8 +11,8 @@ jobs:
     - uses: actions/setup-go@v2.1.4
     - name: Setup All
       run: |
-       sudo apt-get install libldns-dev -y
-       git clone https://github.com/tomnomnom/anew/;git clone https://github.com/blechschmidt/massdns;git clone https://github.com/hahwul/dalfox;git clone https://github.com/ffuf/ffuf;git clone https://github.com/lc/gau/;git clone https://github.com/tomnomnom/gf;git clone https://github.com/hakluke/hakrawler;git clone https://github.com/projectdiscovery/nuclei;git clone https://github.com/projectdiscovery/subfinder;git clone https://github.com/tomnomnom/waybackurls
+       #sudo apt-get install libldns-dev -y
+       git clone https://github.com/blechschmidt/massdns;git clone https://github.com/hahwul/dalfox;git clone https://github.com/ffuf/ffuf;git clone https://github.com/lc/gau/;git clone https://github.com/tomnomnom/gf;git clone https://github.com/hakluke/hakrawler;git clone https://github.com/projectdiscovery/nuclei;git clone https://github.com/projectdiscovery/subfinder;git clone https://github.com/tomnomnom/waybackurls
       working-directory: /home/runner/work/updaterecon
     - name: Build all
       run: |
@@ -20,6 +20,7 @@ jobs:
        GO111MODULE=on go get -v github.com/OWASP/Amass/v3/...
        GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
        cd massdns;make;cd ..
+       cd anew;go build .;cd ..
        cd dalfox;go build .;cd ..
        cd ffuf;go build .;cd ..
        cd gau;go build .;cd ..
@@ -33,9 +34,8 @@ jobs:
       run: |
        git clone https://${{ secrets.tok}}@github.com/wanted1205/1recon.git
        cp massdns/bin/massdns 1recon/bin/
-       cp anew;ls;cd ..
        cp  /home/runner/go/bin/shuffledns /home/runner/work/updaterecon/1recon/bin/;cp  /home/runner/go/bin/amass /home/runner/work/updaterecon/1recon/bin/;cp  /home/runner/go/bin/httpx /home/runner/work/updaterecon/1recon/bin/
-       cp anew/anew 1recon/bin/;cp dalfox/dalfox 1recon/bin/;cp ffuf/ffuf 1recon/bin/;cp hakrawler/hakrawler 1recon/bin/;cp gau/gau 1recon/bin/;cp gf/gf 1recon/bin/;cp nuclei/v2/cmd/nuclei/nuclei 1recon/bin/;cp subfinder/v2/cmd/subfinder/subfinder 1recon/bin/;cp waybackurls/waybackurls 1recon/bin/
+       cp dalfox/dalfox 1recon/bin/;cp ffuf/ffuf 1recon/bin/;cp hakrawler/hakrawler 1recon/bin/;cp gau/gau 1recon/bin/;cp gf/gf 1recon/bin/;cp nuclei/v2/cmd/nuclei/nuclei 1recon/bin/;cp subfinder/v2/cmd/subfinder/subfinder 1recon/bin/;cp waybackurls/waybackurls 1recon/bin/
       working-directory: /home/runner/work/updaterecon
     - name: Push to repo
       run: |
