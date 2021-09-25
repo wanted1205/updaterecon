@@ -33,6 +33,7 @@ jobs:
       run: |
        git clone https://${{ secrets.tok}}@github.com/wanted1205/1recon.git
        cp massdns/bin/massdns 1recon/bin/
+       cp anew;ls;cd ..
        cp  /home/runner/go/bin/shuffledns /home/runner/work/updaterecon/1recon/bin/;cp  /home/runner/go/bin/amass /home/runner/work/updaterecon/1recon/bin/;cp  /home/runner/go/bin/httpx /home/runner/work/updaterecon/1recon/bin/
        cp anew/anew 1recon/bin/;cp dalfox/dalfox 1recon/bin/;cp ffuf/ffuf 1recon/bin/;cp hakrawler/hakrawler 1recon/bin/;cp gau/gau 1recon/bin/;cp gf/gf 1recon/bin/;cp nuclei/v2/cmd/nuclei/nuclei 1recon/bin/;cp subfinder/v2/cmd/subfinder/subfinder 1recon/bin/;cp waybackurls/waybackurls 1recon/bin/
       working-directory: /home/runner/work/updaterecon
