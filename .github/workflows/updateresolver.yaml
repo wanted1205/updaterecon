@@ -13,6 +13,8 @@ jobs:
       run: |
         git clone https://github.com/vortexau/dnsvalidator
         cd dnsvalidator
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         pip3 install wheel
         pip3 install setuptools
         sudo python3 setup.py install
@@ -24,8 +26,6 @@ jobs:
         sort -uR ../resolvers.txt -o ../resolvers.txt
     - name: Commit resolvers.txt
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
         git clone https://${{ secrets.tok }}@github.com/wanted1205/1recon.git
         git clone https://${{ secrets.tok }}@github.com/wanted1205/recon.git
         cp resolvers.txt 1recon/resolvers.txt;cp resolvers.txt recon/resolvers.txt 
