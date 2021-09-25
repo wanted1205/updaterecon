@@ -1,9 +1,7 @@
 name: Build all binary
-#on:
-#  schedule:
-#  - cron: "30 16 * * *"
 on:
-  workflow_dispatch:
+  schedule:
+  - cron: "30 16 * * *"
 jobs:
   build:
     runs-on: ubuntu-latest
