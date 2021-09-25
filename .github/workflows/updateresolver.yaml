@@ -1,8 +1,10 @@
 name: Update resolvers
 
+#on:
+#  schedule:
+#  - cron:  '00 00 * * *'
 on:
-  schedule:
-  - cron:  '00 00 * * *'
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
