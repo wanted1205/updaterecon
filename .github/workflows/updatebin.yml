@@ -20,7 +20,6 @@ jobs:
        GO111MODULE=on go get -v github.com/OWASP/Amass/v3/...
        GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
        cd massdns;make;cd ..
-       cd anew;go build .;cd ..
        cd dalfox;go build .;cd ..
        cd ffuf;go build .;cd ..
        cd gau;go build .;cd ..
