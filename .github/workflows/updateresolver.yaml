@@ -1,9 +1,8 @@
 name: Update resolvers
-#schedule:
-#- cron:  '00 00 * * *'
+
 on:
-  workflow_dispatch:
-  
+  schedule:
+   - cron:  '00 00 * * *' 
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,13 +25,10 @@ jobs:
     - name: Commit resolvers.txt
       run: |
         echo "complete here";ls
-        #git clone https://${{ secrets.tok }}@github.com/wanted1205/1recon.git
-        #git clone https://${{ secrets.tok }}@github.com/wanted1205/recon.git
-        #cp resolvers.txt 1recon/resolvers.txt;cp resolvers.txt recon/resolvers.txt
-        #cd 1recon;ls;git add resolvers.txt;git commit -m "Update resolvers" -a;git push "https://${{ secrets.tok }}@github.com/wanted1205/1recon.git" HEAD:master --follow-tags;cd ..
-        #cd recon;ls;git add resolvers.txt;git commit -m "Update resolvers" -a;git push "https://${{ secrets.tok }}@github.com/wanted1205/recon.git" HEAD:main --follow-tags
-    - uses: actions/checkout@master
-    - name: Update the original for better use
-    - run: |
-       ls
-      
+        git clone https://${{ secrets.tok }}@github.com/wanted1205/1recon.git
+        git clone https://${{ secrets.tok }}@github.com/wanted1205/recon.git
+        git clone https://${{ secrets.tok }}@github.com/wanted1205/updaterecon.git
+        cp resolvers.txt 1recon/resolvers.txt;cp resolvers.txt recon/resolvers.txt;cp resolvers.txt updaterecon/resolvers.txt
+        cd 1recon;ls;git add resolvers.txt;git commit -m "Update resolvers" -a;git push "https://${{ secrets.tok }}@github.com/wanted1205/1recon.git" HEAD:master --follow-tags;cd ..
+        cd recon;ls;git add resolvers.txt;git commit -m "Update resolvers" -a;git push "https://${{ secrets.tok }}@github.com/wanted1205/recon.git" HEAD:main --follow-tags;cd ..
+        cd updaterecon;ls;git add resolvers.txt;git commit -m "Update resolvers" -a;git push "https://${{ secrets.tok }}@github.com/wanted1205/updaterecon.git" HEAD:main --follow-tags
