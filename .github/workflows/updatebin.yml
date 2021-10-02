@@ -1,5 +1,6 @@
 name: Build all binary
 on:
+  workflow_dispatch:
   schedule:
   - cron: "30 16 * * *"
 jobs:
