@@ -24,7 +24,6 @@ jobs:
         cat resolvers.txt|sort|uniq>>resolvers1.txt;mv resolvers1.txt resolvers.txt
     - name: Commit resolvers.txt
       run: |
-        echo "complete here";ls
         git clone https://${{ secrets.tok }}@github.com/wanted1205/1recon.git
         git clone https://${{ secrets.tok }}@github.com/wanted1205/recon.git
         git clone https://${{ secrets.tok }}@github.com/wanted1205/updaterecon.git
