@@ -16,10 +16,8 @@ jobs:
         pip3 install setuptools
         sudo python3 setup.py install
         dnsvalidator -tL https://raw.githubusercontent.com/wanted1205/updaterecon/main/resolvers.txt -threads 5 -o ../resolvers.txt
-        #dnsvalidator -tL https://raw.githubusercontent.com/proabiral/Fresh-Resolvers/master/resolvers.ipv6 -threads 5 -o ../resolvers.txt
         dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 5 -o ../resolvers.txt
         dnsvalidator -tL https://raw.githubusercontent.com/proabiral/Fresh-Resolvers/master/resolvers.txt -threads 5 -o ../resolvers.txt
-        #dnsvalidator -tL https://raw.githubusercontent.com/blechschmidt/massdns/master/lists/resolvers.txt -threads 5 -o ../resolvers.txt
         sed -i '/^$/d' ../resolvers.txt;cd ..
         cat resolvers.txt|sort|uniq>>resolvers1.txt;mv resolvers1.txt resolvers.txt
     - name: Commit resolvers.txt
