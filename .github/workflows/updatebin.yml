@@ -7,7 +7,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/setup-go@v2.1.4
+    - name: Setup Go
+      run: |
+         wget https://golang.org/dl/go1.17.2.linux-amd64.tar.gz
+         sudo rm -rf /usr/local/go &&sudo tar -C /usr/local -xzf go1.17.2.linux-amd64.tar.gz
+         export PATH=$PATH:/usr/local/go/bin
     - name: Setup All
       run: |
        sudo apt-get install libldns-dev -y
@@ -15,6 +19,7 @@ jobs:
       working-directory: /home/runner/work/updaterecon
     - name: Build all
       run: |
+       export PATH=$PATH:/usr/local/go/bin
        GO111MODULE=on go get -v github.com/projectdiscovery/shuffledns/cmd/shuffledns
        go get -v github.com/OWASP/Amass/v3/...
        GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
