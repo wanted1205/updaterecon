@@ -1,5 +1,6 @@
 name: Build all binary
 on:
+  workflow_dispatch:
   schedule:
   - cron: "30 16 * * *"
 jobs:
@@ -23,7 +24,7 @@ jobs:
        cd gau;go build .;cd ..
        cd gf;go build .;cd ..
        cd hakrawler;go build .;cd ..
-       cd nuclei/v2/cmd/nuclei/;go build .;cd ../../../../
+       go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
        cd subfinder/v2/cmd/subfinder;go build . ;cd ../../../../
        cd waybackurls;go build .;cd ..
       working-directory: /home/runner/work/updaterecon 
@@ -33,10 +34,10 @@ jobs:
        git clone https://${{ secrets.tok}}@github.com/wanted1205/recon.git
        git clone https://${{ secrets.tok}}@github.com/wanted1205/1recon.git
        cp massdns/bin/massdns 1recon/bin/;cp massdns/bin/massdns recon/bin/;cd /home/runner/go/bin/;ls;cd ..;ls;cd /home/runner/work/updaterecon
-       cp dalfox/dalfox recon/bin/;cp ffuf/ffuf recon/bin/;cp hakrawler/hakrawler recon/bin/;cp gau/gau recon/bin/;cp gf/gf recon/bin/;cp nuclei/v2/cmd/nuclei/nuclei recon/bin/;cp subfinder/v2/cmd/subfinder/subfinder recon/bin/;cp waybackurls/waybackurls recon/bin/
-       cp  /home/runner/go/bin/shuffledns /home/runner/work/updaterecon/recon/bin/;cp  $GOPATH/bin/amass /home/runner/work/updaterecon/recon/bin/;cp  /home/runner/go/bin/httpx /home/runner/work/updaterecon/recon/bin/
-       cp  /home/runner/go/bin/shuffledns /home/runner/work/updaterecon/1recon/bin/;cp  $GOPATH/bin/amass /home/runner/work/updaterecon/1recon/bin/;cp  /home/runner/go/bin/httpx /home/runner/work/updaterecon/1recon/bin/
-       cp dalfox/dalfox 1recon/bin/;cp ffuf/ffuf 1recon/bin/;cp hakrawler/hakrawler 1recon/bin/;cp gau/gau 1recon/bin/;cp gf/gf 1recon/bin/;cp nuclei/v2/cmd/nuclei/nuclei 1recon/bin/;cp subfinder/v2/cmd/subfinder/subfinder 1recon/bin/;cp waybackurls/waybackurls 1recon/bin/
+       cp dalfox/dalfox recon/bin/;cp ffuf/ffuf recon/bin/;cp hakrawler/hakrawler recon/bin/;cp gau/gau recon/bin/;cp gf/gf recon/bin/;cp subfinder/v2/cmd/subfinder/subfinder recon/bin/;cp waybackurls/waybackurls recon/bin/
+       cp  /home/runner/go/bin/shuffledns /home/runner/work/updaterecon/recon/bin/;cp  $GOPATH/bin/amass /home/runner/work/updaterecon/recon/bin/;cp  /home/runner/go/bin/httpx /home/runner/work/updaterecon/recon/bin/ cp  /home/runner/go/bin/nuclei /home/runner/work/updaterecon/recon/bin/
+       cp  /home/runner/go/bin/shuffledns /home/runner/work/updaterecon/1recon/bin/;cp  $GOPATH/bin/amass /home/runner/work/updaterecon/1recon/bin/;cp  /home/runner/go/bin/httpx /home/runner/work/updaterecon/1recon/bin/ cp  /home/runner/go/bin/nuclei /home/runner/work/updaterecon/1recon/bin/
+       cp dalfox/dalfox 1recon/bin/;cp ffuf/ffuf 1recon/bin/;cp hakrawler/hakrawler 1recon/bin/;cp gau/gau 1recon/bin/;cp gf/gf 1recon/bin/;cp subfinder/v2/cmd/subfinder/subfinder 1recon/bin/;cp waybackurls/waybackurls 1recon/bin/
       working-directory: /home/runner/work/updaterecon
     - name: Push to repo
       run: |
