@@ -29,7 +29,7 @@ jobs:
        cd gau;go build .;cd ..
        cd gf;go build .;cd ..
        cd hakrawler;go build .;cd ..
-       go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+       go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
        cd subfinder/v2/cmd/subfinder;go build . ;cd ../../../../
        cd waybackurls;go build .;cd ..
       working-directory: /home/runner/work/updaterecon 
