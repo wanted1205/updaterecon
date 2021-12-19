@@ -37,7 +37,7 @@ jobs:
        echo "i starting hakrawler"
        cd hakrawler;go build .;cd ..
        echo "i starting nuclei"
-       cd nuclei/v2/cmd/nuclei/;go build .;cd ../../../../
+       GO111MODULE=on go get -u -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
        echo "i starting subfinder"
        cd subfinder/v2/cmd/subfinder;go build . ;cd ../../../../
        echo "i starting waybackurls"
