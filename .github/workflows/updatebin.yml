@@ -17,7 +17,6 @@ jobs:
       working-directory: /home/runner/work/updaterecon
     - name: Build all
       run: |
-       export PATH=$PATH:/usr/local/go/bin
        echo "starting shuffledns"
        GO111MODULE=on go get -v github.com/projectdiscovery/shuffledns/cmd/shuffledns
        echo "starting amass"
