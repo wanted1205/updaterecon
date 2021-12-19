@@ -9,13 +9,13 @@ jobs:
     steps:
     - name: Setup Go
       run: |
-         wget https://golang.org/dl/go1.17.2.linux-amd64.tar.gz
-         sudo rm -rf /usr/local/go &&sudo tar -C /usr/local -xzf go1.17.2.linux-amd64.tar.gz
+         wget https://go.dev/dl/go1.17.5.linux-amd64.tar.gz
+         sudo rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.5.linux-amd64.tar.gz
          export PATH=$PATH:/usr/local/go/bin
     - name: Setup All
       run: |
        sudo apt-get install libldns-dev -y
-       git clone https://github.com/blechschmidt/massdns;git clone https://github.com/hahwul/dalfox;git clone https://github.com/ffuf/ffuf;git clone https://github.com/tomnomnom/gf;git clone https://github.com/hakluke/hakrawler;git clone https://github.com/projectdiscovery/nuclei;git clone https://github.com/projectdiscovery/subfinder;git clone https://github.com/tomnomnom/waybackurls
+       https://github.com/projectdiscovery/nuclei;git clone https://github.com/blechschmidt/massdns;git clone https://github.com/hahwul/dalfox;git clone https://github.com/ffuf/ffuf;git clone https://github.com/tomnomnom/gf;git clone https://github.com/hakluke/hakrawler;git clone https://github.com/projectdiscovery/nuclei;git clone https://github.com/projectdiscovery/subfinder;git clone https://github.com/tomnomnom/waybackurls
       working-directory: /home/runner/work/updaterecon
     - name: Build all
       run: |
@@ -37,7 +37,7 @@ jobs:
        echo "i starting hakrawler"
        cd hakrawler;go build .;cd ..
        echo "i starting nuclei"
-       go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
+       cd nuclei/v2/cmd/nuclei/;go build .;cd ../../../../
        echo "i starting subfinder"
        cd subfinder/v2/cmd/subfinder;go build . ;cd ../../../../
        echo "i starting waybackurls"
