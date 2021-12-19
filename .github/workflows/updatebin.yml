@@ -15,7 +15,7 @@ jobs:
     - name: Setup All
       run: |
        sudo apt-get install libldns-dev -y
-       git clone https://github.com/projectdiscovery/nuclei;git clone https://github.com/blechschmidt/massdns;git clone https://github.com/hahwul/dalfox;git clone https://github.com/ffuf/ffuf;git clone https://github.com/tomnomnom/gf;git clone https://github.com/hakluke/hakrawler;git clone https://github.com/projectdiscovery/nuclei;git clone https://github.com/projectdiscovery/subfinder;git clone https://github.com/tomnomnom/waybackurls
+       git clone https://github.com/blechschmidt/massdns;git clone https://github.com/hahwul/dalfox;git clone https://github.com/ffuf/ffuf;git clone https://github.com/tomnomnom/gf;git clone https://github.com/hakluke/hakrawler;git clone https://github.com/projectdiscovery/nuclei;git clone https://github.com/projectdiscovery/subfinder;git clone https://github.com/tomnomnom/waybackurls
       working-directory: /home/runner/work/updaterecon
     - name: Build all
       run: |
