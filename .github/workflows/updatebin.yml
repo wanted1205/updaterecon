@@ -42,8 +42,8 @@ jobs:
        echo "copying dalfox"
        cp dalfox/dalfox recon/bin/;cp ffuf/ffuf recon/bin/;cp hakrawler/hakrawler recon/bin/
        echo "copying go binary"
-       cp  /home/runner/go/bin/subfinder /home/runner/work/updaterecon/recon/bin/;cp  /home/runner/go/bin/shuffledns /home/runner/work/updaterecon/recon/bin/;cp  /home/runner/go/bin/amass /home/runner/work/updaterecon/recon/bin/;cp  /home/runner/go/bin/httpx /home/runner/work/updaterecon/recon/bin/ cp  /home/runner/go/bin/nuclei /home/runner/work/updaterecon/recon/bin/
-       cp  /home/runner/go/bin/subfinder /home/runner/work/updaterecon/recon/bin/;cp  /home/runner/go/bin/shuffledns /home/runner/work/updaterecon/1recon/bin/;cp  /home/runner/go/bin/amass /home/runner/work/updaterecon/1recon/bin/;cp  /home/runner/go/bin/httpx /home/runner/work/updaterecon/1recon/bin/ cp  /home/runner/go/bin/nuclei /home/runner/work/updaterecon/1recon/bin/
+       cp -r /home/runner/go/bin/. /home/runner/work/updaterecon/1recon/bin/
+       cp -r /home/runner/go/bin/. /home/runner/work/updaterecon/recon/bin/
        cp dalfox/dalfox 1recon/bin/;cp ffuf/ffuf 1recon/bin/;cp hakrawler/hakrawler 1recon/bin/
       working-directory: /home/runner/work/updaterecon
     - name: Push to repo
