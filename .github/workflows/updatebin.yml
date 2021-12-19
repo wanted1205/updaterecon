@@ -17,7 +17,6 @@ jobs:
       working-directory: /home/runner/work/updaterecon
     - name: Build all
       run: |
-       echo "starting shuffledns"
        GO111MODULE=on go get -v github.com/projectdiscovery/shuffledns/cmd/shuffledns
        echo "starting amass"
        go get -v github.com/OWASP/Amass/v3/...
@@ -39,9 +38,7 @@ jobs:
        git config --global user.name "Github Actions";git config --global user.email "actions@github.com"
        git clone https://${{ secrets.tok}}@github.com/wanted1205/recon.git
        git clone https://${{ secrets.tok}}@github.com/wanted1205/1recon.git
-       echo "copying dalfox"
        cp dalfox/dalfox recon/bin/;cp ffuf/ffuf recon/bin/;cp hakrawler/hakrawler recon/bin/
-       echo "copying go binary"
        cp -r /home/runner/go/bin/. /home/runner/work/updaterecon/1recon/bin/
        cp -r /home/runner/go/bin/. /home/runner/work/updaterecon/recon/bin/
        cp dalfox/dalfox 1recon/bin/;cp ffuf/ffuf 1recon/bin/;cp hakrawler/hakrawler 1recon/bin/
