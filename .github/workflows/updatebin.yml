@@ -8,14 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Setup Go
-      run: |
-         wget https://go.dev/dl/go1.17.5.linux-amd64.tar.gz
-         sudo rm -rf /usr/local/go &&sudo tar -C /usr/local -xzf go1.17.5.linux-amd64.tar.gz
-         export PATH=$PATH:/usr/local/go/bin
+      uses: actions/setup-go@v2
+      with:
+          go-version: 1.17
     - name: Setup All
       run: |
-       sudo apt-get install libldns-dev -y
-       git clone https://github.com/blechschmidt/massdns;git clone https://github.com/hahwul/dalfox;git clone https://github.com/ffuf/ffuf;git clone https://github.com/tomnomnom/gf;git clone https://github.com/hakluke/hakrawler;git clone https://github.com/projectdiscovery/subfinder;git clone https://github.com/tomnomnom/waybackurls
+         git clone https://github.com/hahwul/dalfox;git clone https://github.com/ffuf/ffuf;git clone https://github.com/hakluke/hakrawler
       working-directory: /home/runner/work/updaterecon
     - name: Build all
       run: |
@@ -25,9 +23,7 @@ jobs:
        echo "i starting amass"
        go get -v github.com/OWASP/Amass/v3/...
        echo "i starting httpx"
-       GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
-       echo "i starting massdns"
-       cd massdns;make;cd ..
+       go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
        echo "i starting dalfox"
        cd dalfox;go build .;cd ..
        echo "i starting ffuf"
@@ -37,11 +33,9 @@ jobs:
        echo "i starting hakrawler"
        cd hakrawler;go build .;cd ..
        echo "i starting nuclei"
-       GO111MODULE=on go get -u -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
+       go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
        echo "i starting subfinder"
-       cd subfinder/v2/cmd/subfinder;go build . ;cd ../../../../
-       echo "i starting waybackurls"
-       cd waybackurls;go build .;cd ..
+       go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
       working-directory: /home/runner/work/updaterecon 
     - name: Copy all
       run: |
