@@ -18,23 +18,23 @@ jobs:
     - name: Build all
       run: |
        export PATH=$PATH:/usr/local/go/bin
-       echo "i starting shuffledns"
+       echo "starting shuffledns"
        GO111MODULE=on go get -v github.com/projectdiscovery/shuffledns/cmd/shuffledns
-       echo "i starting amass"
+       echo "starting amass"
        go get -v github.com/OWASP/Amass/v3/...
-       echo "i starting httpx"
+       echo "starting httpx"
        go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-       echo "i starting dalfox"
+       echo "starting dalfox"
        cd dalfox;go build .;cd ..
-       echo "i starting ffuf"
+       echo "starting ffuf"
        cd ffuf;go build .;cd ..
-       echo "i starting gf"
+       echo "starting gf"
        cd gf;go build .;cd ..
-       echo "i starting hakrawler"
+       echo "starting hakrawler"
        cd hakrawler;go build .;cd ..
-       echo "i starting nuclei"
+       echo "starting nuclei"
        go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
-       echo "i starting subfinder"
+       echo "starting subfinder"
        go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
       working-directory: /home/runner/work/updaterecon 
     - name: Copy all
@@ -43,12 +43,11 @@ jobs:
        git clone https://${{ secrets.tok}}@github.com/wanted1205/recon.git
        git clone https://${{ secrets.tok}}@github.com/wanted1205/1recon.git
        find / -name "amass"
-       cp massdns/bin/massdns 1recon/bin/;cp massdns/bin/massdns recon/bin/;cd /home/runner/go/bin/;ls;cd ..;ls;cd /home/runner/work/updaterecon
        cp dalfox/dalfox recon/bin/;cp ffuf/ffuf recon/bin/;cp hakrawler/hakrawler recon/bin/;cp gau/gau recon/bin/;cp gf/gf recon/bin/;cp subfinder/v2/cmd/subfinder/subfinder recon/bin/;cp waybackurls/waybackurls recon/bin/
        cp  /home/runner/go/bin/shuffledns /home/runner/work/updaterecon/recon/bin/;cp  /home/runner/go/bin/amass /home/runner/work/updaterecon/recon/bin/;cp  /home/runner/go/bin/httpx /home/runner/work/updaterecon/recon/bin/ cp  /home/runner/go/bin/nuclei /home/runner/work/updaterecon/recon/bin/
        cp  /home/runner/go/bin/shuffledns /home/runner/work/updaterecon/1recon/bin/;cp  /home/runner/go/bin/amass /home/runner/work/updaterecon/1recon/bin/;cp  /home/runner/go/bin/httpx /home/runner/work/updaterecon/1recon/bin/ cp  /home/runner/go/bin/nuclei /home/runner/work/updaterecon/1recon/bin/
        cp dalfox/dalfox 1recon/bin/;cp ffuf/ffuf 1recon/bin/;cp hakrawler/hakrawler 1recon/bin/;cp gau/gau 1recon/bin/;cp gf/gf 1recon/bin/;cp subfinder/v2/cmd/subfinder/subfinder 1recon/bin/;cp waybackurls/waybackurls 1recon/bin/
-      working-directory: /home/runner/work/updaterecon
+      working-directory: /home/runner/go/bin/
     - name: Push to repo
       run: |
        git add bin/
