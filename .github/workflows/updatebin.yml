@@ -15,7 +15,7 @@ jobs:
     - name: Setup All
       run: |
        sudo apt-get install libldns-dev -y
-       git clone https://github.com/blechschmidt/massdns;git clone https://github.com/hahwul/dalfox;git clone https://github.com/ffuf/ffuf;git clone https://github.com/lc/gau/;git clone https://github.com/tomnomnom/gf;git clone https://github.com/hakluke/hakrawler;git clone https://github.com/projectdiscovery/nuclei;git clone https://github.com/projectdiscovery/subfinder;git clone https://github.com/tomnomnom/waybackurls
+       git clone https://github.com/blechschmidt/massdns;git clone https://github.com/hahwul/dalfox;git clone https://github.com/ffuf/ffuf;git clone https://github.com/tomnomnom/gf;git clone https://github.com/hakluke/hakrawler;git clone https://github.com/projectdiscovery/nuclei;git clone https://github.com/projectdiscovery/subfinder;git clone https://github.com/tomnomnom/waybackurls
       working-directory: /home/runner/work/updaterecon
     - name: Build all
       run: |
@@ -26,7 +26,6 @@ jobs:
        cd massdns;make;cd ..
        cd dalfox;go build .;cd ..
        cd ffuf;go build .;cd ..
-       cd gau;go build .;cd ..
        cd gf;go build .;cd ..
        cd hakrawler;go build .;cd ..
        go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
