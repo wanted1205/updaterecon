@@ -13,7 +13,7 @@ jobs:
           go-version: 1.17
     - name: Setup All
       run: |
-         git clone https://github.com/hahwul/dalfox;git clone https://github.com/ffuf/ffuf;git clone https://github.com/hakluke/hakrawler
+         git clone https://github.com/hahwul/dalfox;git clone https://github.com/ffuf/ffuf
       working-directory: /home/runner/work/updaterecon
     - name: Build all
       run: |
@@ -26,8 +26,6 @@ jobs:
        cd dalfox;go build .;cd ..
        echo "starting ffuf"
        cd ffuf;go build .;cd ..
-       echo "starting hakrawler"
-       cd hakrawler;go build .;cd ..
        echo "starting nuclei"
        go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
        echo "starting subfinder"
@@ -38,10 +36,10 @@ jobs:
        git config --global user.name "Github Actions";git config --global user.email "actions@github.com"
        git clone https://${{ secrets.tok}}@github.com/wanted1205/recon.git
        git clone https://${{ secrets.tok}}@github.com/wanted1205/1recon.git
-       cp dalfox/dalfox recon/bin/;cp ffuf/ffuf recon/bin/;cp hakrawler/hakrawler recon/bin/
-       cp -r /home/runner/go/bin/. /home/runner/work/updaterecon/1recon/bin/
-       cp -r /home/runner/go/bin/. /home/runner/work/updaterecon/recon/bin/
-       cp dalfox/dalfox 1recon/bin/;cp ffuf/ffuf 1recon/bin/;cp hakrawler/hakrawler 1recon/bin/
+       cp dalfox/dalfox recon/bin/;cp ffuf/ffuf recon/bin/
+       cp -r /home/runner/go/bin/. /home/runner/work/updaterecon/1recon/bin/;rm -rf /home/runner/work/updaterecon/1recon/bin/examples
+       cp -r /home/runner/go/bin/. /home/runner/work/updaterecon/recon/bin/;rm -rf /home/runner/work/updaterecon/recon/bin/examples
+       cp dalfox/dalfox 1recon/bin/;cp ffuf/ffuf 1recon/bin/
       working-directory: /home/runner/work/updaterecon
     - name: Push to repo
       run: |
