@@ -2,7 +2,7 @@ name: Build all binary for collecting domains
 on:
   workflow_dispatch:
   schedule:
-  - cron: "30 16 * * *"
+  - cron: "00 16 * * *"
 jobs:
   build:
     runs-on: ubuntu-latest
