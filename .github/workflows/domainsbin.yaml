@@ -22,6 +22,7 @@ jobs:
        go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
        echo "starting subfinder"
        go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+       go get github.com/Ice3man543/SubOver
       working-directory: /home/runner/work/updaterecon 
     - name: Copy all
       run: |
