@@ -15,7 +15,6 @@ jobs:
       run: |
        go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
        go get -u github.com/tomnomnom/httprobe
-       go get -u github.com/michenriksen/aquatone
       working-directory: /home/runner/work/updaterecon 
     - name: Copy all
       run: |
