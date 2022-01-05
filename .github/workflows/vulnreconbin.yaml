@@ -20,12 +20,12 @@ jobs:
     - name: Copy all
       run: |
        git config --global user.name "Github Actions";git config --global user.email "actions@github.com"
-       git clone https://${{ secrets.tok}}@github.com/wanted1205/domainrecon.git
-       cp -r /home/runner/go/bin/. /home/runner/work/updaterecon/domainrecon/bin/;rm -rf /home/runner/work/updaterecon/domainrecon/bin/examples
+       git clone https://${{ secrets.tok}}@github.com/wanted1205/vulnrecon.git
+       cp -r /home/runner/go/bin/. /home/runner/work/updaterecon/vulnrecon/bin/;rm -rf /home/runner/work/updaterecon/vulnrecon/bin/examples
       working-directory: /home/runner/work/updaterecon
     - name: Push to repo
       run: |
        git add bin/
        git commit -m "Update bin" -a
-       git push "https://${{ secrets.tok }}@github.com/wanted1205/domainrecon.git" HEAD:master --follow-tags
+       git push "https://${{ secrets.tok }}@github.com/wanted1205/vulnrecon.git" HEAD:master --follow-tags
       working-directory: /home/runner/work/updaterecon/domainrecon 
