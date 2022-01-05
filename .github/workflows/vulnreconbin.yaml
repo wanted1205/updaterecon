@@ -28,4 +28,4 @@ jobs:
        git add bin/
        git commit -m "Update bin" -a
        git push "https://${{ secrets.tok }}@github.com/wanted1205/vulnrecon.git" HEAD:master --follow-tags
-      working-directory: /home/runner/work/updaterecon/domainrecon 
+      working-directory: /home/runner/work/updaterecon/vulnrecon 
