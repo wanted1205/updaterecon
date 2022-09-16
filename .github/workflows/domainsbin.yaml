@@ -13,7 +13,6 @@ jobs:
           go-version: 1.17
     - name: Build all
       run: |
-       go get github.com/cgboal/sonarsearch/cmd/crobat
        go install github.com/d3mondev/puredns/v2@latest
        echo "starting amass"
        go get -v github.com/OWASP/Amass/v3/...
