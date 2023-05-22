@@ -17,7 +17,6 @@ jobs:
       working-directory: /home/runner/work/updaterecon
     - name: Build all
       run: |
-       go get github.com/cgboal/sonarsearch/cmd/crobat
        GO111MODULE=on go get -u -v github.com/bp0lr/gauplus
        go install github.com/d3mondev/puredns/v2@latest
        echo "starting amass"
