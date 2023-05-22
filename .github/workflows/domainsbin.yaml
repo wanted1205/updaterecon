@@ -15,7 +15,7 @@ jobs:
       run: |
        go install github.com/d3mondev/puredns/v2@latest
        echo "starting amass"
-       go get -v github.com/OWASP/Amass/v3/...
+       go install -v github.com/owasp-amass/amass/v3/...@master
        go get -u github.com/tomnomnom/anew
        echo "starting nuclei"
        go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
